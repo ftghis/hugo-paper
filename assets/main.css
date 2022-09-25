@@ -1471,7 +1471,7 @@ body {
 }
 
 .max-w-3xl {
-  max-width: 48rem;
+  max-width: 60rem;
 }
 
 .shrink-0 {
@@ -1750,7 +1750,7 @@ body {
 }
 
 article {
-  font-size: 1.125rem;
+  font-size: 1rem; /* 1.125rem; */
   line-height: 1.75rem;
   line-height: 1.9;
   --tw-text-opacity: 1;
