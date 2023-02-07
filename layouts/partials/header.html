@@ -1,6 +1,8 @@
 <header class="mx-auto flex h-[5rem] max-w-3xl px-8 lg:justify-center">
   <div class="relative z-50 mr-auto flex items-center">
-    <a class="-translate-x-[1px] -translate-y-0.5 text-3xl font-bold" href="{{ `` | absURL }}"
+    <a
+      class="-translate-x-[1px] -translate-y-0.5 text-3xl font-bold"
+      href="{{ `` | absURL }}"
       >{{ site.Title }}</a
     >
     <a
@@ -37,8 +39,12 @@
 
     // init
     const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-    const darkVal = localStorage.getItem('dark');
-    setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
 
     // listen system
     darkScheme.addEventListener('change', (event) => {
@@ -76,7 +82,7 @@
       <a
         class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
         style="--url: url(./{{ . }}.svg)"
-        href="{{ if eq . `rss` }} {{ `index.xml` | absURL }} {{ else }} https://{{ . }}.com/{{ site.Params.Get . }} {{ end }}"
+        href="{{ if eq . `rss` }} {{ `index.xml` | absURL }} {{ else if eq . `mastodon` }} {{ site.Params.Get . }} {{ else }} https://{{ . }}.com/{{ site.Params.Get . }} {{ end }}"
         target="_blank"
       ></a>
       {{ end }}<!---->
