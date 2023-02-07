@@ -38,7 +38,7 @@
     // init
     const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
     const darkVal = localStorage.getItem('dark');
-    setDark(false) // setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
 
     // listen system
     darkScheme.addEventListener('change', (event) => {
